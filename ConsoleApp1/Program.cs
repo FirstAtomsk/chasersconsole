@@ -9,10 +9,12 @@ namespace ConsoleApp1
     class Program
     {
 
-        public static ID Login()
+
+        static void Main(string[] args)
         {
-            ID alex = new ID("alex", 60, "Obninsk", "alex", "12345");           /*это у меня такая БД*/
-            ID ilya = new ID("ilya", 70, "Moscow", "ilya", "12345");
+
+            ID alex = new ID("Брайер Алексей", 60, "Обнинск", "Alex", "12345");           /*это у меня такая "БД"*/
+            ID ilya = new ID("Ситников Илья", 70, "Москва", "BigRichDick", "12345");
 
             List<ID> idList = new List<ID>();           /*заливаю БД в массив*/
             idList.Add(alex);
@@ -23,9 +25,9 @@ namespace ConsoleApp1
 
             int token = 1;          /*это я так чекаю прохождение массива без совпадений - связка a1 */
 
-            ID usernow = new ID("0",0,"0","0","0");
+            ID usernow = new ID("0", 0, "0", "0", "0");
 
-            foreach (ID i in idList)
+            foreach (ID i in idList)            /*собственно, аутентификация, шарю массив*/
             {
                 if (i.login == loginow)
                 {
@@ -47,24 +49,32 @@ namespace ConsoleApp1
                 }
             }
 
+
             if (token == 1) Console.WriteLine("Данное имя пользователя не найдено");            /*связка a1*/
 
-
-            return usernow;
+            Profile (usernow.name, usernow.city, usernow.weight);
+            
         }
-        
 
-        static void Main(string[] args)
+
+
+        static void Profile(string name, string city, int weight)
         {
 
-            ID usernow = new ID("0", 0, "0", "0", "0");
-            usernow = Login();
 
-            Console.WriteLine(usernow.name);
+            Console.WriteLine();
+            Console.WriteLine("Имя: " + name);
+            Console.WriteLine("Город: " + city);
+            Console.WriteLine("Вес: " + weight);
+
+            Console.WriteLine("Вам доступны следующие функции:");
+
+            Console.WriteLine("Новый рекорд");
+
             Console.ReadLine();
+
         }
 
 
-        
     }
 }
