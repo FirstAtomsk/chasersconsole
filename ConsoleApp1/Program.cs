@@ -58,7 +58,7 @@ namespace ConsoleApp1
 
 
 
-        static void Profile(string name, string city, int weight)
+        static void Profile(string name, string city, int weight)           /*имитация страницы профиля*/
         {
 
 
