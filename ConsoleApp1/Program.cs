@@ -9,8 +9,7 @@ namespace ConsoleApp1
     class Program
     {
 
-
-        static void Main(string[] args)
+        public static ID Login()
         {
             ID alex = new ID("alex", 60, "Obninsk", "alex", "12345");           /*это у меня такая БД*/
             ID ilya = new ID("ilya", 70, "Moscow", "ilya", "12345");
@@ -22,19 +21,22 @@ namespace ConsoleApp1
             Console.WriteLine("Введите свой логин");            /*проверяю логин по массиву*/
             string loginow = Console.ReadLine();
 
-            int token = 1;          /*это я так чекаю прохождение массива без совпадений - связка que1 */
+            int token = 1;          /*это я так чекаю прохождение массива без совпадений - связка a1 */
 
-            foreach ( ID i in idList)
+            ID usernow = new ID("0",0,"0","0","0");
+
+            foreach (ID i in idList)
             {
                 if (i.login == loginow)
                 {
                     Console.WriteLine("Логин принят, введите пароль");
-                    passcheck:
+                passcheck:
                     string passnow = Console.ReadLine();
-                    if(i.pass == passnow)
+                    if (i.pass == passnow)
                     {
                         Console.WriteLine("Аутентификация успешна.");
                         token = 0;
+                        usernow = i;
                         break;
                     }
                     else
@@ -42,12 +44,23 @@ namespace ConsoleApp1
                         Console.WriteLine("Неверный пароль, попробуйте ещё раз.");
                         goto passcheck;
                     }
-                }            
+                }
             }
 
-            if (token == 1) Console.WriteLine("Данное имя пользователя не найдено");            /*связка que1*/
+            if (token == 1) Console.WriteLine("Данное имя пользователя не найдено");            /*связка a1*/
 
 
+            return usernow;
+        }
+        
+
+        static void Main(string[] args)
+        {
+
+            ID usernow = new ID("0", 0, "0", "0", "0");
+            usernow = Login();
+
+            Console.WriteLine(usernow.name);
             Console.ReadLine();
         }
 
