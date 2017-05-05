@@ -128,7 +128,7 @@ namespace ConsoleApp1
 
             foreach (ID i in BenchPressList)
             {
-                Console.WriteLine(i.name + i.BP_place + " " + i.BP_res);
+                Console.WriteLine(i.name + " " + i.BP_place + " " + i.BP_res);
             }
                 
         }
